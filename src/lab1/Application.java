@@ -20,6 +20,7 @@ public class Application
                 if (array[k] != null)
                     k++;
                 array[k] = "";
+
             }
                     array[k] += tempChar;
             }
