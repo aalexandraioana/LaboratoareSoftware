@@ -1,0 +1,6 @@
+1024,Ioan,Mihalcea,ISM41/1
+1025,Andrei,Popa,ISM41/2
+1026,Bianca,Popescu,TI31/2
+1026,Anamaria,Prodan,TI31/1
+1027,Paul,Mohanu,TI32/1
+1028,Mihai,Ionescu,TI32/2
