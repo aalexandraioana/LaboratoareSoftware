@@ -41,9 +41,14 @@ public class Student {
         this.nota = nota;
     }
 
+    public double getNota()
+    {
+        return this.nota;
+    }
+
     public String toString()
     {
-        return String.format("%15d %20s %s", this.numarMatricol, this.prenume + " " + this.nume, this.formatieDeStudiu, this.nota);
+        return String.format("%15d %20s %s %17.2f", this.numarMatricol, this.prenume + " " + this.nume, this.formatieDeStudiu, this.nota);
     }
 
     public boolean verifPrezenta(List<Student> lista)
@@ -76,6 +81,25 @@ public class Student {
     public boolean verifPrezenta3 (List<Student> lista)
     {
         return lista.contains(this);
+    }
+
+    public static double gasesteNota(String prenume, String nume, Map<String, Student>mapStudenti)
+    {
+        HashMap<String, Student>mapStudentiIntern = new HashMap<>();
+
+        for (Student s : mapStudenti.values())
+        {
+            mapStudentiIntern.put(s.getPrenume() + s.getNume(), s);
+        }
+
+        Student cautaStudent = mapStudentiIntern.get(prenume + nume);
+
+        if (cautaStudent != null)
+        {
+            return cautaStudent.getNota();
+        }
+        else
+            return 0.0;
     }
 
 

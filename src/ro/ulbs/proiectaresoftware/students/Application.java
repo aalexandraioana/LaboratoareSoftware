@@ -1,9 +1,11 @@
 package ro.ulbs.proiectaresoftware.students;
+import lab4.Tanar;
 import java.util.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import static ro.ulbs.proiectaresoftware.students.Student.gasesteNota;
 
 public class Application {
     public static void main()
@@ -17,6 +19,7 @@ public class Application {
         {
             List<Student> inListaStudenti = new ArrayList<Student>();
             List<String> outListaStudenti = new ArrayList<String>();
+            HashMap<String, Student> mapStudenti = new HashMap<>();
 
             String studentiCititiFisier = "";
 
@@ -36,6 +39,26 @@ public class Application {
                     Student s = new Student(numarMatricolCurent, prenumeCurent, numeCurent, formatieDeStudiuCurenta);
 
                     inListaStudenti.add(s);
+                    mapStudenti.put(String.valueOf(numarMatricolCurent), s);
+                }
+            }
+
+            Path inNoteStudenti = Paths.get("note_anon.txt");
+
+            try(Scanner scanner = new Scanner(inNoteStudenti))
+            {
+                String noteCititeFisier = "";
+
+                while(scanner.hasNextLine())
+                {
+                    noteCititeFisier = scanner.nextLine();
+                    String[] separaNoteFisier = noteCititeFisier.split(",");
+                    String numarMatricolCurent = separaNoteFisier[0].trim();
+                    double notaCurenta = Double.parseDouble(separaNoteFisier[1].trim());
+
+                    Student s = mapStudenti.get(numarMatricolCurent);
+                    if (s != null)
+                        s.setNota(notaCurenta);
                 }
             }
 
@@ -49,6 +72,19 @@ public class Application {
             }
 
             Files.write(outStudenti2, outListaStudenti);
+
+            System.out.println("Continutul Map-ului cu studenti: ");
+            IO.println(String.format("%15s %20s %s %s", "numar matricol", "prenume nume", "formatie de studiu", "nota"));
+            for (Student s : mapStudenti.values())
+            {
+                System.out.println(s.toString());
+            }
+
+            double notaM = gasesteNota("Paul", "Mohanu", mapStudenti);
+            double notaN = gasesteNota("Ioan", "Popa", mapStudenti);
+
+            System.out.println("Paul Mohanu are nota " + notaM);
+            System.out.println("Ioan Popa are nota " + notaN);
         }
         catch (IOException e)
         {
@@ -61,7 +97,7 @@ public class Application {
         Student s4 = new Student(122, "Mihai", "Vecerdea", "TI21/1");
         Student s5 = new Student(122, "Eugen", "Uritescu", "TI21/2");
 
-        IO.println(String.format("%15s %20s %s", "numar matricol", "prenume nume", "formatie de studiu"));
+        IO.println(String.format("%15s %20s %s %s", "numar matricol", "prenume nume", "formatie de studiu", "nota"));
         /*IO.println(s1.toString());
         IO.println(s2.toString());
         IO.println(s3.toString());
@@ -145,5 +181,7 @@ public class Application {
         {
             IO.println("Studentul(a) " + cautaStudent2.nume + " " + cautaStudent2.prenume + " nu este in lista.");
         }
+
+
     }
 }
