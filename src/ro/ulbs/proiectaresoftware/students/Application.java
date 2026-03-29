@@ -9,7 +9,7 @@ public class Application {
     public static void main()
     {
 
-        Path inStudenti = Paths.get("studenti_in.txt");
+        Path inStudenti = Paths.get("studenti_in.txt"); // sau src/lab3/studenti_in.txt, cu cale relativa
         Path outStudenti1 = Paths.get("studenti_out.txt");
         Path outStudenti2 = Paths.get("studenti_out_sorted.txt");
 
