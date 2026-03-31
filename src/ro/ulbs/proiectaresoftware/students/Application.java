@@ -53,8 +53,8 @@ public class Application {
                 {
                     noteCititeFisier = scanner.nextLine();
                     String[] separaNoteFisier = noteCititeFisier.split(",");
-                    String numarMatricolCurent = separaNoteFisier[0].trim();
-                    double notaCurenta = Double.parseDouble(separaNoteFisier[1].trim());
+                    String numarMatricolCurent = separaNoteFisier[0];
+                    double notaCurenta = Double.parseDouble(separaNoteFisier[1]);
 
                     Student s = mapStudenti.get(numarMatricolCurent);
                     if (s != null)
