@@ -19,7 +19,7 @@ public class Application {
         {
             List<Student> inListaStudenti = new ArrayList<Student>();
             List<String> outListaStudenti = new ArrayList<String>();
-            HashMap<String, Student> mapStudenti = new HashMap<>();
+            Map<String, Student> mapStudenti = new HashMap<>();
 
             String studentiCititiFisier = "";
 
