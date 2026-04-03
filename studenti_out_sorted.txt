@@ -1,5 +1,4 @@
            1024        Ioan Mihalcea ISM41/1              9.80
-           1030          Paul Mohanu ISM41/2             10.00
            1025          Andrei Popa ISM41/2              8.70
            1026      Anamaria Prodan TI31/1              8.90
            1026       Bianca Popescu TI31/2              0.00

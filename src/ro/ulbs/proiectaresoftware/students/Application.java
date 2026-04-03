@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import static ro.ulbs.proiectaresoftware.students.Student.gasesteNota;
+import static ro.ulbs.proiectaresoftware.students.StudentiBursieri.writeToFile;
 
 public class Application {
     public static void main()
@@ -181,6 +182,16 @@ public class Application {
         {
             IO.println("Studentul(a) " + cautaStudent2.nume + " " + cautaStudent2.prenume + " nu este in lista.");
         }
+
+
+        Set<StudentiBursieri> bursieri = new HashSet<>();
+
+        bursieri.add( new StudentiBursieri(1025,"Andrei","Popa","ISM141/2", 725.50));
+        bursieri.add( new StudentiBursieri(1024,"Ioan","Mihalcea","ISM141/1", 801.10));
+        bursieri.add( new StudentiBursieri(1026,"Anamaria","Prodan","TI131/1", 745.50));
+        bursieri.add( new StudentiBursieri(1029,"Bianca","Popescu","TI131/1",  780.80));
+
+        writeToFile("bursieri_out.txt", bursieri);
 
 
     }
