@@ -15,7 +15,6 @@ public class StudentiBursieri extends Student
     {
         super(numarMatricol, prenume, nume, formatieDeStudiu);
         this.cuantumBursa = cunatumBursa;
-        this.setNota(nota);
     }
 
     public String toString()
