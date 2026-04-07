@@ -1,6 +1,6 @@
-           1024        Ioan Mihalcea ISM41/1              9.80
-           1025          Andrei Popa ISM41/2              8.70
-           1026      Anamaria Prodan TI31/1              8.90
-           1026       Bianca Popescu TI31/2              0.00
-           1027          Paul Mohanu TI32/1              5.40
            1028        Mihai Ionescu TI32/2              6.20
+           1024        Ioan Mihalcea ISM41/1              9.80
+           1027          Paul Mohanu TI32/1              5.40
+           1025          Andrei Popa ISM41/2              8.70
+           1026       Bianca Popescu TI31/2              0.00
+           1026      Anamaria Prodan TI31/1              8.90

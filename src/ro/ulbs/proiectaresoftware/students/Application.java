@@ -37,6 +37,7 @@ public class Application {
                     String numeCurent = separaStudentiFisier[2];
                     String formatieDeStudiuCurenta = separaStudentiFisier[3];
 
+
                     Student s = new Student(numarMatricolCurent, prenumeCurent, numeCurent, formatieDeStudiuCurenta);
 
                     inListaStudenti.add(s);
@@ -64,7 +65,7 @@ public class Application {
             }
 
             inListaStudenti.sort(Comparator.comparing(Student::getFormatieDeStudiu).thenComparing(Student::getNume));
-            //inListaStudenti.sort(Comparator.comparing(Student::getNume));
+            inListaStudenti.sort(Comparator.comparing(Student::getNume));
 
             for (Student s : inListaStudenti)
             {
@@ -186,10 +187,10 @@ public class Application {
 
         Set<StudentiBursieri> bursieri = new HashSet<>();
 
-        bursieri.add( new StudentiBursieri(1025,"Andrei","Popa","ISM141/2", 725.50));
-        bursieri.add( new StudentiBursieri(1024,"Ioan","Mihalcea","ISM141/1", 801.10));
-        bursieri.add( new StudentiBursieri(1026,"Anamaria","Prodan","TI131/1", 745.50));
-        bursieri.add( new StudentiBursieri(1029,"Bianca","Popescu","TI131/1",  780.80));
+        bursieri.add( new StudentiBursieri(1025,"Andrei","Popa","ISM141/2", 8.70, 725.50));
+        bursieri.add( new StudentiBursieri(1024,"Ioan","Mihalcea","ISM141/1", 9.80,801.10));
+        bursieri.add( new StudentiBursieri(1026,"Anamaria","Prodan","TI131/1", 8.90, 745.50));
+        bursieri.add( new StudentiBursieri(1029,"Bianca","Popescu","TI131/1",  9.10,780.80));
 
         writeToFile("bursieri_out.txt", bursieri);
 

@@ -8,6 +8,15 @@ public class Student {
     String formatieDeStudiu;
     double nota;
 
+    public Student (int numarMatricol, String prenume, String nume, String formatieDeStudiu, double nota)
+    {
+        this.numarMatricol = numarMatricol;
+        this.prenume = prenume;
+        this.nume = nume;
+        this.formatieDeStudiu = formatieDeStudiu;
+        this.nota = nota;
+    }
+
     public Student (int numarMatricol, String prenume, String nume, String formatieDeStudiu)
     {
         this.numarMatricol = numarMatricol;
