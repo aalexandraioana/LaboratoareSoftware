@@ -11,10 +11,10 @@ public class StudentiBursieri extends Student
 {
     double cuantumBursa;
 
-    public StudentiBursieri(int numarMatricol, String prenume, String nume, String formatieDeStudiu, double nota, double cuatumBursa)
+    public StudentiBursieri(int numarMatricol, String prenume, String nume, String formatieDeStudiu, double nota, double cuantumBursa)
     {
         super(numarMatricol, prenume, nume, formatieDeStudiu, nota);
-        this.cuantumBursa = cuatumBursa;
+        this.cuantumBursa = cuantumBursa;
     }
 
     public String toString()
