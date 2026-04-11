@@ -41,12 +41,19 @@ public class StudentiBursieri extends Student
             {
                 writer.println(s.toString());
             }
+
+            // alternate versions
+            // 1 - mapBursieri.forEach(System.out::println);
+            // 2 - mapBursieri.forEach((Object o)-> System.out.println(o));
         }
         catch (IOException e)
         {
             System.err.println(e.getMessage());
         }
     }
-
+    public double getCuantumBursa()
+    {
+        return this.cuantumBursa;
+    }
 
 }
