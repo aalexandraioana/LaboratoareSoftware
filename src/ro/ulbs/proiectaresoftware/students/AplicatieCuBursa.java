@@ -1,4 +1,4 @@
-package ro.ulbs.proiectaresoftware.students;
+/*package ro.ulbs.proiectaresoftware.students;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -39,4 +39,4 @@ public class AplicatieCuBursa {
         lst.sort(Comparator.comparing(StudentiBursieri::getFormatieDeStudiu).thenComparing(StudentiBursieri::getNume).thenComparing(StudentiBursieri::getPrenume).thenComparing(StudentiBursieri::getNota).thenComparing(StudentiBursieri::getCuantumBursa));
         return lst;
     }
-}
+}*/

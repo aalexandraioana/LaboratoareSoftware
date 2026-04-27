@@ -5,8 +5,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import static ro.ulbs.proiectaresoftware.students.Student.gasesteNota;
-import static ro.ulbs.proiectaresoftware.students.StudentiBursieri.writeToFile;
+
+import static ro.ulbs.proiectaresoftware.students.Student.*;
+//import static ro.ulbs.proiectaresoftware.students.StudentiBursieri.writeToFile;
 
 public class Application {
     public static void main()
@@ -60,7 +61,8 @@ public class Application {
 
                     Student s = mapStudenti.get(numarMatricolCurent);
                     if (s != null)
-                        s.setNota(notaCurenta);
+                        schimbaNota(s, notaCurenta);
+
                 }
             }
 
@@ -125,37 +127,37 @@ public class Application {
         IO.println("Cautare pt liste varianta 1: ");
         if(cautaStudent1.verifPrezenta(listStudenti)) //listaStudenti.contains(cautaStudent1))
         {
-            IO.println("Studentul(a) " + cautaStudent1.nume + " " + cautaStudent1.prenume + " este in lista.");
+            IO.println("Studentul(a) " + cautaStudent1.getNume() + " " + cautaStudent1.getPrenume() + " este in lista.");
         }
         else
         {
-            IO.println("Studentul(a) " + cautaStudent1.nume + " " + cautaStudent1.prenume + " nu este in lista.");
+            IO.println("Studentul(a) " + cautaStudent1.getNume() + " " + cautaStudent1.getPrenume() + " nu este in lista.");
         }
         if(cautaStudent2.verifPrezenta(listStudenti))
         {
-            IO.println("Studentul(a) " + cautaStudent2.nume + " " + cautaStudent2.prenume + " este in lista.");
+            IO.println("Studentul(a) " + cautaStudent2.getNume() + " " + cautaStudent2.getPrenume() + " este in lista.");
         }
         else
         {
-            IO.println("Studentul(a) " + cautaStudent2.nume + " " + cautaStudent2.prenume + " nu este in lista.");
+            IO.println("Studentul(a) " + cautaStudent2.getNume() + " " + cautaStudent2.getPrenume() + " nu este in lista.");
         }
 
         IO.println("Cautare pt liste varianta 2: ");
         if(listStudenti.contains(cautaStudent1))
         {
-            IO.println("Studentul(a) " + cautaStudent1.nume + " " + cautaStudent1.prenume + " este in lista.");
+            IO.println("Studentul(a) " + cautaStudent1.getNume() + " " + cautaStudent1.getPrenume() + " este in lista.");
         }
         else
         {
-            IO.println("Studentul(a) " + cautaStudent1.nume + " " + cautaStudent1.prenume + " nu este in lista.");
+            IO.println("Studentul(a) " + cautaStudent1.getNume() + " " + cautaStudent1.getPrenume() + " nu este in lista.");
         }
         if(cautaStudent2.verifPrezenta3(listStudenti))
         {
-            IO.println("Studentul(a) " + cautaStudent2.nume + " " + cautaStudent2.prenume + " este in lista.");
+            IO.println("Studentul(a) " + cautaStudent2.getNume() + " " + cautaStudent2.getPrenume() + " este in lista.");
         }
         else
         {
-            IO.println("Studentul(a) " + cautaStudent2.nume + " " + cautaStudent2.prenume + " nu este in lista.");
+            IO.println("Studentul(a) " + cautaStudent2.getNume() + " " + cautaStudent2.getPrenume() + " nu este in lista.");
         }
 
         Set<Student> setStudenti = new HashSet<>();
@@ -169,31 +171,47 @@ public class Application {
         IO.println("Cautare pt seturi: ");
         if(cautaStudent1.verifPrezenta2(setStudenti))
         {
-            IO.println("Studentul(a) " + cautaStudent1.nume + " " + cautaStudent1.prenume + " este in lista.");
+            IO.println("Studentul(a) " + cautaStudent1.getNume() + " " + cautaStudent1.getPrenume() + " este in lista.");
         }
         else
         {
-            IO.println("Studentul(a) " + cautaStudent1.nume + " " + cautaStudent1.prenume + " nu este in lista.");
+            IO.println("Studentul(a) " + cautaStudent1.getNume() + " " + cautaStudent1.getPrenume() + " nu este in lista.");
         }
         if(cautaStudent2.verifPrezenta2(setStudenti))
         {
-            IO.println("Studentul(a) " + cautaStudent2.nume + " " + cautaStudent2.prenume + " este in lista.");
+            IO.println("Studentul(a) " + cautaStudent2.getNume() + " " + cautaStudent2.getPrenume() + " este in lista.");
         }
         else
         {
-            IO.println("Studentul(a) " + cautaStudent2.nume + " " + cautaStudent2.prenume + " nu este in lista.");
+            IO.println("Studentul(a) " + cautaStudent2.getNume() + " " + cautaStudent2.getPrenume() + " nu este in lista.");
         }
 
 
-        Set<StudentiBursieri> bursieri = new HashSet<>();
+        /*Set<StudentiBursieri> bursieri = new HashSet<>();
 
         bursieri.add( new StudentiBursieri(1025,"Andrei","Popa","ISM141/2", 8.70, 725.50));
         bursieri.add( new StudentiBursieri(1024,"Ioan","Mihalcea","ISM141/1", 9.80,801.10));
         bursieri.add( new StudentiBursieri(1026,"Anamaria","Prodan","TI131/1", 8.90, 745.50));
         bursieri.add( new StudentiBursieri(1029,"Bianca","Popescu","TI131/1",  9.10,780.80));
 
-        writeToFile("bursieri_out.txt", bursieri);
+        writeToFile("bursieri_out.txt", bursieri);*/
 
+        Set<Student> setStudentiLab7 = new HashSet<>();
+        setStudentiLab7.add(new Student(2050, "Ioana", "Popa", "ISM21/2", 6.90));
+        setStudentiLab7.add(new Student(2041, "Denis", "Moldovan", "ISM21/1", 9.20));
+        setStudentiLab7.add(new Student(2017, "Elena", "Ionescu", "TI22/1", 9.50));
+        setStudentiLab7.add(new Student(2048, "Maria", "Blaga", "ISM21/2", 8.70));
+        setStudentiLab7.add(new Student(2066, "David", "Gheorghe", "TI21/2", 7.70));
 
+        setStudentiLab7 = imparteInDouaFormatii(setStudentiLab7, "TI21/1", "TI21/2");
+
+        IO.println("Studentii impartiti in doua formatii de studiu: ");
+
+        IO.println(String.format("%15s %20s %s %s", "numar matricol", "prenume nume", "formatie de studiu", "nota"));
+
+        for (Student s : setStudentiLab7)
+        {
+            IO.println((s.toString()));
+        }
     }
 }

@@ -1,12 +1,12 @@
 package ro.ulbs.proiectaresoftware.students;
 import java.util.*;
 
-public class Student {
-    int numarMatricol;
-    String prenume;
-    String nume;
-    String formatieDeStudiu;
-    double nota;
+public final class Student {
+     private final int numarMatricol;
+     private String prenume;
+     private final String nume;
+     private final String formatieDeStudiu;
+     private final double nota;
 
     public Student (int numarMatricol, String prenume, String nume, String formatieDeStudiu, double nota)
     {
@@ -23,6 +23,7 @@ public class Student {
         this.prenume = prenume;
         this.nume = nume;
         this.formatieDeStudiu = formatieDeStudiu;
+        this.nota = 0.0;
     }
 
     public int getNumarMatricol ()
@@ -45,9 +46,13 @@ public class Student {
         return this.formatieDeStudiu;
     }
 
-    public void setNota (double nota)
+    /*public void setNota (double nota)
     {
         this.nota = nota;
+    }*/
+
+    public static Student schimbaNota(Student st, double notaNoua) {
+        return new Student(st.numarMatricol, st.prenume, st.nume, st.formatieDeStudiu, notaNoua);
     }
 
     public double getNota()
@@ -109,6 +114,28 @@ public class Student {
         }
         else
             return 0.0;
+    }
+
+    public static Student schimbaFormatia(Student st, String nouaFormatieDeStudiu)
+    {
+        return new Student (st.numarMatricol, st.prenume, st.nume, nouaFormatieDeStudiu, st.nota);
+    }
+
+    public static Set<Student> imparteInDouaFormatii(Set <Student> studenti, String formatia1, String formatia2)
+    {
+       Set<Student> rezultatImpartire = new LinkedHashSet<>();
+       int totalStudenti = studenti.size();
+       int dimensiuneFormatie = (totalStudenti + 1) / 2;
+       int i = 0;
+
+       for (Student s : studenti)
+       {
+           String formatia = (i < dimensiuneFormatie) ? formatia1 : formatia2;
+           rezultatImpartire.add(schimbaFormatia(s, formatia));
+           i++;
+       }
+
+       return rezultatImpartire;
     }
 
 

@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 import java.util.Collection;
 import java.util.Objects;
 
-public class StudentiBursieri extends Student
+/*public class StudentiBursieri extends Student
 {
     double cuantumBursa;
 
@@ -56,4 +56,4 @@ public class StudentiBursieri extends Student
         return this.cuantumBursa;
     }
 
-}
+}*/
