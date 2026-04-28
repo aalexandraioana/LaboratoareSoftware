@@ -3,7 +3,7 @@ import java.util.*;
 
 public final class Student {
      private final int numarMatricol;
-     private String prenume;
+     private final String prenume;
      private final String nume;
      private final String formatieDeStudiu;
      private final double nota;
