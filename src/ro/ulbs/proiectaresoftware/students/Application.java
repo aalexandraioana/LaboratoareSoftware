@@ -61,7 +61,10 @@ public class Application {
 
                     Student s = mapStudenti.get(numarMatricolCurent);
                     if (s != null)
-                        schimbaNota(s, notaCurenta);
+                    {
+                        Student s_new = schimbaNota(s, notaCurenta);
+                        mapStudenti.put(numarMatricolCurent, s_new);
+                    }
 
                 }
             }
