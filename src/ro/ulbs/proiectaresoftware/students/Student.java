@@ -116,26 +116,26 @@ public final class Student {
             return 0.0;
     }
 
-    public static Student schimbaFormatia(Student st, String nouaFormatieDeStudiu)
+    public Student schimbaFormatia(String nouaFormatieDeStudiu)
     {
-        return new Student (st.numarMatricol, st.prenume, st.nume, nouaFormatieDeStudiu, st.nota);
+        return new Student (this.numarMatricol, this.prenume, this.nume, nouaFormatieDeStudiu, this.nota);
     }
 
     public static Set<Student> imparteInDouaFormatii(Set <Student> studenti, String formatia1, String formatia2)
     {
-       Set<Student> rezultatImpartire = new LinkedHashSet<>();
-       int totalStudenti = studenti.size();
-       int dimensiuneFormatie = (totalStudenti + 1) / 2;
-       int i = 0;
+        Set<Student> rezultatImpartire = new LinkedHashSet<>();
+        int totalStudenti = studenti.size();
+        int dimensiuneFormatie = (totalStudenti + 1) / 2;
+        int i = 0;
 
-       for (Student s : studenti)
-       {
-           String formatia = (i < dimensiuneFormatie) ? formatia1 : formatia2;
-           rezultatImpartire.add(schimbaFormatia(s, formatia));
-           i++;
-       }
+        for (Student s : studenti)
+        {
+            String formatia = (i < dimensiuneFormatie) ? formatia1 : formatia2;
+            rezultatImpartire.add(s.schimbaFormatia(formatia));
+            i++;
+        }
 
-       return rezultatImpartire;
+        return rezultatImpartire;
     }
 
 

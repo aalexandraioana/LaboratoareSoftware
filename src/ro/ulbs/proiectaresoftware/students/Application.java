@@ -1,5 +1,11 @@
 package ro.ulbs.proiectaresoftware.students;
 import lab4.Tanar;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.*;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -216,5 +222,82 @@ public class Application {
         {
             IO.println((s.toString()));
         }
+
+        //Laborator 8
+        writeToXls(setStudentiLab7, "laborator8_students.xlsx");
+
+        List<Student> studentiCititiXls = readFromXls("laborator8_students.xlsx");
+        System.out.printf("%20s %20s %20s %20s %20s%n", "Numar matricol", "Prenume", "Nume", "Formatie de studiu", "Nota");
+
+        for (Student st : studentiCititiXls)
+        {
+            System.out.printf("%20d %20s %20s %20s %20.2f%n", st.getNumarMatricol(), st.getPrenume(),
+                    st.getNume(), st.getFormatieDeStudiu(), st.getNota());
+        }
+
+    }
+    public static void writeToXls(Set<Student> studenti, String filename)
+    {
+        try (XSSFWorkbook workbook = new XSSFWorkbook();
+        FileOutputStream out = new FileOutputStream(filename))
+        {
+            XSSFSheet sheet = workbook.createSheet("Studenti");
+            int rowNumber = 0;
+            Row headerRow = sheet.createRow(rowNumber++);
+            headerRow.createCell(0).setCellValue("Numar matricol");
+            headerRow.createCell(1).setCellValue("Prenume");
+            headerRow.createCell(2).setCellValue("Nume");
+            headerRow.createCell(3).setCellValue("Formatie de studiu");
+            headerRow.createCell(4).setCellValue("Nota");
+
+            for (Student st : studenti)
+            {
+                Row row = sheet.createRow(rowNumber++);
+                row.createCell(0).setCellValue((long) st.getNumarMatricol());
+                row.createCell(1).setCellValue(st.getPrenume());
+                row.createCell(2).setCellValue(st.getNume());
+                row.createCell(3).setCellValue(st.getFormatieDeStudiu());
+                row.createCell(4).setCellValue(st.getNota());
+            }
+            workbook.write(out);
+            System.out.println("Exportul in Excel a fost finalizat cu succes.");
+            System.out.println("Iata continutul fisierului citit...");
+
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public static List<Student> readFromXls(String filename)
+    {
+        List<Student> studentList = new ArrayList<>();
+        try (FileInputStream fileIn = new FileInputStream(filename);
+        XSSFWorkbook workbook = new XSSFWorkbook(fileIn))
+        {
+            XSSFSheet sheet = workbook.getSheetAt(0);
+            Iterator<Row> rowIterator = sheet.iterator();
+
+            if (rowIterator.hasNext())
+                rowIterator.next();
+
+            while (rowIterator.hasNext())
+            {
+                Row row = rowIterator.next();
+                int numarMatricolCurent = (int) row.getCell(0).getNumericCellValue();
+                String prenumeCurent = row.getCell(1).getStringCellValue();
+                String numeCurent = row.getCell(2).getStringCellValue();
+                String formatieDeStudiuCurenta = row.getCell(3).getStringCellValue();
+                double notaCurenta = row.getCell(4).getNumericCellValue();
+
+                studentList.add(new Student(numarMatricolCurent, prenumeCurent, numeCurent, formatieDeStudiuCurenta, notaCurenta));
+            }
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        return studentList;
     }
 }
