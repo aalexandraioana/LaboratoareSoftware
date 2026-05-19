@@ -22,17 +22,20 @@ public class AplicatieCuStrategy
         //a
         IStudentiExport strategyConsole = new StudentiInConsola();
         Exporter exporter = new Exporter();
-        exporter.startExport(strategyConsole, studenti);
+        exporter.setStrategy(strategyConsole);
+        exporter.startExport(studenti);
 
         //b
         String fileName1 = "studenti.txt";
         StudentiInFisierText strategyFisierText = new StudentiInFisierText(fileName1);
-        exporter.startExport(strategyFisierText, studenti);
+        exporter.setStrategy(strategyFisierText);
+        exporter.startExport(studenti);
 
         //c
         String fileName2 = "studentiStrategyExcel.xlsx";
         StudentiInFisierXlsx strategyFisierExcel = new StudentiInFisierXlsx(fileName2);
-        exporter.startExport(strategyFisierExcel, studenti);
+        exporter.setStrategy(strategyFisierExcel);
+        exporter.startExport(studenti);
 
         //d
         List<Student> studentiImportatiTxt = new ArrayList<>();

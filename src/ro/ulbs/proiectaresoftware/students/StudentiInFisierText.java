@@ -26,6 +26,12 @@ public class StudentiInFisierText implements IStudentiExport
                     writer.write(String.format("%-15d %-20s %-20s %-20s %-15.2f%n", s.getNumarMatricol(), s.getPrenume(), s.getNume(), s.getFormatieDeStudiu(), s.getNota()));
 
                 }
+                //Varianta cu stream-uri
+                /*studenti.stream().
+                        forEach(s -> {try {writer.write(String.format("%-15d %-20s %-20s %-20s %-15.2f%n", s.getNumarMatricol(), s.getPrenume(), s.getNume(), s.getFormatieDeStudiu(), s.getNota()));}
+                        catch(IOException e) {e.printStackTrace();}
+                        }
+);*/
             }
 
             catch (IOException e)

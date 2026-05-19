@@ -3,8 +3,13 @@ import java.util.List;
 
 public class Exporter
 {
-    void startExport(IStudentiExport strategyInstance, List<Student> students)
+    private IStudentiExport strategy;
+    public void setStrategy(IStudentiExport strategy)
     {
-        strategyInstance.doExport(students);
+        this.strategy = strategy;
+    }
+    void startExport(List<Student> students)
+    {
+        strategy.doExport(students);
     }
 }
