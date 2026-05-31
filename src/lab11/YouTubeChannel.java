@@ -1,9 +1,10 @@
 package lab11;
 import java.util.ArrayList;
+import java.util.List;
 
 public class YouTubeChannel implements Subject{
     private String channelName;
-    private ArrayList<Observer> observers;
+    private List<Observer> observers;
 
     public YouTubeChannel(String channelName)
     {
@@ -47,10 +48,7 @@ public class YouTubeChannel implements Subject{
     @Override
     public void notifyObservers(String message)
     {
-        for (Observer observer : observers)
-        {
-            observer.update(message);
-
-        }
+        observers.stream()
+                .forEach(observer -> observer.update(message));
     }
 }
